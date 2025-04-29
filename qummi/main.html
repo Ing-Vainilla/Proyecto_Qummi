@@ -1,84 +1,142 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Mi Mascota Virtual</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Qummi UI Prototipo</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: url('https://i.imgur.com/ynb5MTM.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
+      padding: 0;
+    }
+
+    body {
+      background-color: #d6eaf8;
+      font-family: 'Arial Rounded MT', sans-serif;
       height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Logo y estado */
+    .top-left {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-container {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  background-color: #c0d6e4;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+}
+
+.status-icon {
+  width: 28px;
+  height: 28px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 2px solid #7fb3d5;
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  z-index: 2; /* más alto que el logo */
+}
+
+
+    .qummi-text {
+      font-size: 20px;
+      font-weight: bold;
+      background-color: #a9cce3;
+      padding: 5px 10px;
+      border-radius: 8px;
+    }
+
+    /* Menú hamburguesa */
+    .top-right {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .hamburger {
+      width: 50px;
+      height: 50px;
+      background-color: #aed6f1;
+      border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-
-    .habitat {
-      background-color: rgba(0, 0, 0, 0.6);
-      border-radius: 20px;
-      padding: 40px;
-      text-align: center;
-      max-width: 600px;
-      width: 90%;
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
-    }
-
-    .mascota {
-      width: 150px;
-      height: 150px;
-      margin: 20px auto;
-      background-image: url('https://i.imgur.com/NMEpRzQ.png'); 
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    .mensaje {
-      margin: 20px 0;
-      font-size: 1.2em;
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 15px;
-      border-radius: 10px;
-    }
-
-    .acciones button {
-      margin: 10px;
-      padding: 10px 20px;
-      background-color: #5c5cff;
-      border: none;
-      border-radius: 10px;
-      color: white;
-      font-weight: bold;
       cursor: pointer;
-      transition: 0.3s;
     }
 
-    .acciones button:hover {
-      background-color: #7878ff;
-      transform: scale(1.05);
+    .hamburger::before {
+      content: "≡";
+      font-size: 30px;
+      color: #21618c;
     }
+
+    /* Barra circular de recursos */
+    .bottom-left {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      width: 170px;
+      height: 170px;
+    }
+
+    .resource-circle {
+      width: 100%;
+      height: 100%;
+    }
+
+    svg {
+      transform: rotate(-90deg);
+    }
+
   </style>
 </head>
 <body>
-  <div class="habitat">
-    <h2>Bienvenido a tu habitación</h2>
-    <div class="mascota" id="mascota"></div>
-    <div class="mensaje" id="mensaje">
-      ¡Hola! ¿Cómo te sientes hoy?
+
+<!-- Logo + estado -->
+<div class="top-left">
+    <div class="logo-container">
+      <div class="logo"></div>
+      <div class="status-icon"></div>
     </div>
-    <div class="acciones">
-      <button onclick="interactuar('¡Estoy feliz de verte!')">Hablar</button>
-      <button onclick="interactuar('Gracias por jugar conmigo')">Abrazar</button>
-      <button onclick="interactuar('¡Hora de jugar!')">Jugar</button>
-    </div>
+    <div class="qummi-text">Q U M M I</div>
+  </div>
+  
+
+  <!-- Menú hamburguesa -->
+  <div class="top-right">
+    <div class="hamburger"></div>
   </div>
 
-  <script>
-    function interactuar(texto) {
-      document.getElementById("mensaje").textContent = texto;
-    }
-  </script>
+  <!-- Barra circular tipo pastel -->
+  <div class="bottom-left">
+    <svg class="resource-circle" viewBox="0 0 32 32">
+      <circle r="16" cx="16" cy="16" fill="#ecf0f1"/>
+      <path d="M16 16 L16 0 A16 16 0 0 1 30.8 8 Z" fill="#2980b9"/>
+      <path d="M16 16 L30.8 8 A16 16 0 0 1 25.6 28.6 Z" fill="#5dade2"/>
+      <path d="M16 16 L25.6 28.6 A16 16 0 0 1 6.4 28.6 Z" fill="#aed6f1"/>
+      <path d="M16 16 L6.4 28.6 A16 16 0 0 1 1.2 8 Z" fill="#d6eaf8"/>
+      <path d="M16 16 L1.2 8 A16 16 0 0 1 16 0 Z" fill="#85c1e9"/>
+    </svg>
+  </div>
+
 </body>
 </html>
